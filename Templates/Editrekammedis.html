@@ -1,0 +1,83 @@
+{% extends "base/base1.html" %} {% block title %}Edit Rekam Medis{% endblock %} {%block
+  content%}
+
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh">
+    <div class="col-md-8">
+        <div class="card-header text-center">
+          <h3 class="fw-bold">Edit Rekam Medis</h3>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="col-md-6 mb-3">
+              <label for="id_rm" class="form-label fw-semibold">ID Rekam Medis</label>
+              <input type="text" id="id_rm" name="ID_RM" class="form-control" value="{{ rm.ID_RM }}" required/>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="id_pasien" class="form-label fw-semibold">Pilih Pasien</label>
+                <select id="id_pasien" name="ID_Pasien" class="form-control" required>
+                  <option value="" disabled>Pilih Pasien</option>
+                  {% for p in pasien %}
+                    <option value="{{ p.ID_Pasien }}" {% if p.ID_Pasien == rm.ID_Pasien %}selected{% endif %}>
+                      {{ p.Nama_Pasien }}
+                    </option>
+                  {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+              <label for="keluhan" class="form-label fw-semibold">Keluhan</label>
+              <input type="text" id="keluhan" name="Keluhan" class="form-control" value="{{ rm.Keluhan }}" required/>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="id_dokter" class="form-label fw-semibold">Pilih Dokter</label>
+                <select id="id_dokter" name="ID_Dokter" class="form-control" required>
+                  <option value="" disabled>Pilih Dokter</option>
+                  {% for d in dokter %}
+                  <option value="{{ d.ID_Dokter }}" {% if d.ID_Dokter == rm.ID_Dokter %}selected{% endif %}>
+                  {{ d.Nama_Dokter }}
+                  </option>
+                  {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+              <label for="diagnosa" class="form-label fw-semibold">Diagnosa</label>
+              <input type="text" id="diagnosa" name="Diagnosa" class="form-control" value="{{ rm.Diagnosa }}" required/>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+              <label for="id_poli" class="form-label fw-semibold">Pilih Poli</label>
+              <select id="id_poli" name="ID_Poli" class="form-control" required>
+                <option value="" disabled>Pilih Poli Klinik</option>
+                {% for p in poli %}
+                <option value="{{ p.ID_Poli }}" {% if p.ID_Poli == rm.ID_Poli %}selected{% endif %}>
+                {{ p.Nama_Poli }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+              <label for="tgl_periksa" class="form-label fw-semibold">Tanggal Periksa</label>
+              <input type="date" id="tgl_periksa" name="Tgl_Periksa" class="form-control" value="{{ rm.Tgl_Periksa }}" required/>
+            </div>
+
+          
+          <div class="d-flex justify-content-between mt-3">
+            <a href="{{ url_for('tabel_rm') }}" class="btn btn-danger btn-sm">Batal</a>
+            <button type="submit" class="btn btn-primary btn-sm">Simpan Perubahan</button>
+          </div>
+
+    </form>
+          </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <title>{%block title%}Medcare Medical{%endblock%}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{
+    url_for('static',filename="css/bootstrap.css") }}"/> <link rel="stylesheet"
+    href="{{ url_for('static',filename="css/themify-icons.css") }}"/> <link
+    rel="stylesheet" href="{{url_for('static',filename="css/flaticon.css")}}"/>
+    <link rel="stylesheet" href="{{
+    url_for('static',filename="vendors/fontawesome/css/all.min.css") }}"/> <link
+    rel="stylesheet" href="{{
+    url_for('static',filename="vendors/owl-carousel/owl.carousel.min.css") }}"/>
+    <link rel="stylesheet" href="{{
+    url_for('static',filename="vendors/animate-css/animate.css") }}"/>
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/style.css")
+    }}"/> <link rel="stylesheet" href="{{
+    url_for('static',filename="css/responsive.css") }}"/>
+  </head>
+  <body>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+      <div class="top_menu row m0">
+        <div class="container">
+          <div class="float-left">
+            <a class="dn_btn" href="email:medical@gmail.com"
+              ><i class="ti-email"></i>medical@gmail.com
+            </a>
+            <a
+              class="dn_btn"
+              href="https://www.google.com/maps/place/indonesia"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="ti-location-pin"></i>Find our Place
+            </a>
+          </div>
+          <div class="float-right">
+            <ul class="list header_social">
+              <li>
+                <a href="https://www.facebook.com/?locale=id_ID"><i class="ti-facebook"></i></a>
+              </li>
+              <li>
+                <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><i class="ti-twitter-alt"></i></a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/"><i class="ti-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="{{ url_for('Home') }}">
+              <img src="{{ url_for('static',filename="img/logo.png") }}"alt=""/>
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse offset"
+              id="navbarSupportedContent"
+            >
+              <ul class="nav navbar-nav menu_nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('tabel_pasien') }}">Pasien</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('tabel_dokter') }}">Dokter</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('Poliklinik') }}">Poliklinik</a>
+                </li>
+                <li class="nav-item submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Data Medis</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('Obat') }}">Obat</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('tabel_rm') }}"
+                        >Rekam Medis</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('RM_Obat') }}">Rekam Medis Obat</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('logout_user') }}" class="btn btn-danger">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--================Header Menu Area =================-->
+
+    <!--================MAIN CONTENT=================-->
+    {%block content%} {%endblock%}
+    <!--================END MAIN CONTENT=================-->
+    <!-- start footer Area -->
+    <div class="footer-area footer-only">
+      <div class="container">
+        <div class="row footer-bottom d-flex justify-content-between">
+          <p class="col-lg-8 col-sm-12 footer-text m-0">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | This template is made with
+            <i class="fa fa-heart" aria-hidden="true"></i> by
+            <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- End footer Area -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static',filename="js/jquery-2.2.4.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/popper.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/stellar.js") }}"></script>
+    <script src="{{ url_for('static',filename="vendors/owl-carousel/owl.carousel.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/jquery.ajaxchimp.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/waypoints.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/mail-script.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/contact.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/jquery.form.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/jquery.validate.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/mail-script.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/theme.js") }}"></script>
+  </body>
+</html>

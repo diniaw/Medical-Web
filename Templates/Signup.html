@@ -1,0 +1,83 @@
+<!-- Menghubungkan dengan template dasar base2.html -->
+{% extends "base/base2.html" %}
+
+<!-- Menentukan judul halaman -->
+{% block title %}Signup{% endblock %}
+
+<!-- Memulai bagian konten utama -->
+{% block content %}
+
+<!-- Kontainer utama untuk tata letak yang rapi -->
+<div class="container">
+  <div
+    class="row justify-content-center align-items-center"
+    style="height: 100vh"
+  >
+    <div class="col-md-4 login-card">
+      <div class="card shadow">
+        <div class="card-body">
+          <!-- FLASH MESSAGES -->
+          <div class="container mt-3">
+            {% with messages = get_flashed_messages(with_categories=True) %} {%
+            if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+              <div
+                class="alert alert-{{ category }} alert-dismissible fade show shadow-sm flash-message"
+                role="alert"
+              >
+                <strong>{{ message }}</strong>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+          </div>
+          <h3 class="card-title text-center mb-4">Pendaftaran Pengguna Baru</h3>
+          <form method="POST" action="{{ url_for('signup') }}">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Masukkan username"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Masukkan password"
+                required
+              />
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Signup</button>
+            </div>
+          </form>
+          <!-- Opsi Signup -->
+          <div class="text-center mt-3">
+            <p class="mb-0">
+              Sudah punya akun?
+              <a href="{{ url_for('login') }}" class="text-primary">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mengakhiri bagian konten utama -->
+{% endblock %}

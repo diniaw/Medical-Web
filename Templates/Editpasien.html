@@ -1,0 +1,46 @@
+{% extends "base/base1.html" %}
+{% block title %}Edit Data Pasien{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh">
+  <div class="col-md-8">
+    <div class="card shadow-lg border-0 rounded-4">
+      <div class="card-header text-center">
+        <h3 class="fw-bold">Edit Data Pasien</h3>
+      </div>
+
+      <div class="card-body p-4">
+        <form method="POST">
+          
+          <label for="id_pasien">ID Pasien</label>
+          <input type="text" id="id_pasien" name="ID_Pasien" class="form-control" value="{{ pasien.ID_Pasien }}" required />
+
+          <label for="nomor_identitas">Nomor Identitas</label>
+          <input type="text" id="nomor_identitas" name="Nomor_Identitas" class="form-control" value="{{ pasien.Nomor_Identitas }}" required />
+
+          <label for="nama_pasien">Nama Pasien</label>
+          <input type="text" id="nama_pasien" name="Nama_Pasien" class="form-control" value="{{ pasien.Nama_Pasien }}" required />
+
+          <label for="jenis_kelamin">Jenis Kelamin</label>
+          <select id="jenis_kelamin" name="Jenis_Kelamin" class="form-select" value="{{ pasien.Jenis_Kelamin }}" required>
+            <option value="L" {% if pasien.Jenis_Kelamin == "L" %}selected{% endif %}>Laki-laki</option>
+            <option value="P" {% if pasien.Jenis_Kelamin == "P" %}selected{% endif %}>Perempuan</option>
+          </select>
+
+          <label for="alamat">Alamat</label>
+          <input type="text" id="alamat" name="Alamat" class="form-control" value="{{ pasien.Alamat }}" required>
+
+          <label for="no_telepon">No Telepon</label>
+          <input type="text" id="no_telepon" name="No_Telepon" class="form-control" value="{{ pasien.No_Telepon }}" required />
+
+          <div class="d-flex justify-content-between mt-3">
+            <a href="{{ url_for('tabel_pasien') }}" class="btn btn-danger px-4">Batal</a>
+            <button type="submit" class="btn btn-primary px-4">Simpan Perubahan</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

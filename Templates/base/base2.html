@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Login/Signup{% endblock %}</title>
+
+    <!-- Memuat file CSS dari Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/style.css")
+    }}"/>
+    <style>
+      /* Atur background full-screen */
+      body {
+        background-image: url('{{ url_for("static", filename="img/background/bg2.jpg") }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+        margin: 0;
+      }
+      /* Overlay gelap agar form lebih mudah dibaca */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      /* Pastikan card login muncul di atas overlay */
+      .login-card {
+        position: relative;
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Overlay untuk menggelapkan background -->
+    <div class="overlay"></div>
+
+    <!-- Bagian ini akan diisi dengan konten dari template lain -->
+    {% block content %}{% endblock %}
+
+    <!-- SCRIPT UNTUK MENGHILANGKAN FLASH MESSAGE -->
+    <script>
+      setTimeout(function () {
+        let flashMessages = document.querySelectorAll(".flash-message");
+        flashMessages.forEach(function (message) {
+          let bsAlert = new bootstrap.Alert(message);
+          bsAlert.close();
+        });
+      }, 5000); // 5000ms = 5 detik
+    </script>
+    <!-- Memuat file JavaScript dari Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+{% extends "base/base1.html" %} {% block title %}Poliklinik{% endblock %}
+{%block content%}
+<!-- BANNER AREA -->
+<div class="banner_area area-padding-bottom">
+  <section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div
+          class="banner_content d-md-flex justify-content-between align-items-center"
+        >
+          <div class="mb-3 mb-md-0">
+            <h2>Poliklinik</h2>
+            <p>Fasilitas medis yang menyediakan pelayanan kesehatan</p>
+          </div>
+          <div class="page_link">
+            <a href="{{ url_for('Home') }}">Home</a>
+            <a href="{{ url_for('Poliklinik') }}">Poliklinik</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FLASH MESSAGES -->
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=True) %} {% if
+  messages %}
+  <div class="flash-messages">
+    {% for category, message in messages %}
+    <div
+      class="alert alert-{{ category }} alert-dismissible fade show shadow-sm flash-message"
+      role="alert"
+    >
+      <strong>{{ message }}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
+</div>
+
+<!-- TABLE AREA -->
+<div class="container my-4">
+  <div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h5 class="card-title mb-0">Poliklinik</h5>
+      <a href="{{ url_for('tambah_poli') }}" class="btn btn-primary"
+        >Tambah Poliklinik</a
+      >
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>ID Poli</th>
+              <th>Nama Poli</th>
+              <th>Gedung</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for poli in polik %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ poli.ID_Poli }}</td>
+              <td>{{ poli.Nama_Poli }}</td>
+              <td>{{ poli.Gedung }}</td>
+              <td>
+                <a
+                  href="{{ url_for('edit_poliklinik', poli_id=poli.ID_Poli) }}"
+                  class="btn btn-warning btn-sm me-2 text-white"
+                >
+                  <strong>Edit</strong>
+                </a>
+                <a
+                  href="{{ url_for('hapus_poli', poli_id=poli.ID_Poli) }}"
+                  class="btn btn-danger btn-sm text-white"
+                >
+                  <strong>Delete</strong>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div
+          class="dataTables_info"
+          id="basicExample_info"
+          role="status"
+          aria-live="polite"
+        >
+          Showing Page 1 of 1
+        </div>
+        <nav aria-label="Page navigation">
+          <ul class="pagination mb-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                >Previous</a
+              >
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT UNTUK MENGHILANGKAN FLASH MESSAGE -->
+<script>
+  setTimeout(function () {
+    let flashMessages = document.querySelectorAll(".flash-message");
+    flashMessages.forEach(function (message) {
+      let bsAlert = new bootstrap.Alert(message);
+      bsAlert.close();
+    });
+  }, 5000); // 5000ms = 5 detik
+</script>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base/base1.html" %} {% block title %}Edit Rekam Medis Obat{% endblock %} {%block
+content%}
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 80vh"
+>
+  <div class="col-md-8">
+    <div class="card border-0 rounded-3 shadow">
+      <div class="card-header bg-light">
+        <h4 class="fw-bold text-dark">Edit Rekam Medis Obat</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="mb-3">
+            <label for="id_rmo" class="form-label">ID Rekam Medis Obat:</label>
+            <input
+              type="text"
+              class="form-control border border-secondary shadow-sm p-2"
+              id="id_rmo"
+              name="ID_RM_Obat"
+              value="{{ rm_obat.ID_RM_Obat }}"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="id_rm" class="form-label">Rekam Medis:</label>
+            <select id="id_rm" name="ID_RM" class="form-control" required>
+              <option value="" disabled>Pilih Rekam Medis</option>
+              {% for rm in rekam_medis %}
+              <!-- Jika ID Rekam Medis pada record sama dengan option, maka pilih (selected) -->
+              <option value="{{ rm.ID_RM }}" {% if rm_obat.ID_RM == rm.ID_RM %} selected {% endif %}>
+                {{ rm.ID_RM }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="id_obat" class="form-label">Obat:</label>
+            <select id="id_obat" name="ID_Obat" class="form-control" required>
+              <option value="" disabled>Pilih Obat</option>
+              {% for obat in obat_list %}
+              <!-- Tampilkan nama obat, value-nya adalah ID_Obat, dan pilih yang sesuai -->
+              <option value="{{ obat.ID_Obat }}" {% if rm_obat.ID_Obat == obat.ID_Obat %} selected {% endif %}>
+              {{ obat.Nama_Obat }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <a
+              href="{{ url_for('RM_Obat') }}"
+              class="btn btn-outline-primary fw-bold"
+              >Cancel</a
+            >
+            <button type="submit" class="btn btn-primary px-4 py-2">
+              Simpan Perubahan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

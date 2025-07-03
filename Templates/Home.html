@@ -1,0 +1,27 @@
+{% extends "base/base1.html" %} {%block title%}Home{%endblock%} 
+{%block content%}
+<!--================Home Banner Area =================-->
+<section class="banner-area d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <h1>
+          SELAMAT DATANG<br />
+          {{ current_user.username }}
+        </h1>
+        <p>
+          Di sini, setiap hela napas adalah lirik kehidupan yang mengalun dalam
+          irama penyembuhan dan harapan. Kesehatan bukan sekadar tubuh, tetapi
+          juga jiwa yang menari dalam cahaya kebersamaan. Bersama, kita merajut
+          mimpi dan keberanian, menuliskan kisah pemulihan abadi di antara detak
+          waktu yang penuh makna. Di ruang ini, kasih dan dedikasi bersatu,
+          menciptakan simfoni yang mengusir kelam dan membuka jalan menuju
+          kehidupan yang lebih cerah.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+{% endblock %}

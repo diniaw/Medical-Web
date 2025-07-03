@@ -1,0 +1,59 @@
+{% extends "base/base1.html" %} {% block title %}Tambah Poliklinik{% endblock %}
+{% block content %}
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 80vh"
+>
+  <div class="col-md-8">
+    <div class="card shadow-sm border-0 rounded-3">
+      <div class="card-header bg-light">
+        <h4 class="fw-bold text-dark">Tambah Poliklinik</h4>
+      </div>
+      <div class="card-body">
+        <form action="{{ url_for('tambah_poli') }}" method="POST">
+          <div class="mb-3">
+            <label for="ID_Poli" class="form-label">ID Poli:</label>
+            <input
+              type="text"
+              id="ID_Poli"
+              name="ID_Poli"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="Nama_Poli" class="form-label">Nama Poliklinik:</label>
+            <input
+              type="text"
+              id="Nama_Poli"
+              name="Nama_Poli"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="Gedung" class="form-label">Gedung:</label>
+            <input
+              type="text"
+              id="Gedung"
+              name="Gedung"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <a
+              href="{{ url_for('Poliklinik') }}"
+              class="btn btn-outline-primary fw-bold"
+              >Cancel</a
+            >
+            <button type="submit" class="btn btn-primary">
+              Tambahkan Poliklinik
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

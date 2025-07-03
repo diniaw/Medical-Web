@@ -1,0 +1,77 @@
+{% extends "base/base1.html" %} 
+{% block title %}Tambah Rekam Medis Baru{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh">
+  <div class="col-md-8">
+      <div class="card-header text-center">
+        <h3 class="fw-bold">Tambah Rekam Medis Baru</h3>
+      </div>
+
+      <div class="card-body p-4">
+        <form action="{{ url_for('tambah_rm') }}" method="POST">
+
+            <div class="mb-3">
+              <label for="id_rm" class="form-label fw-semibold">ID Rekam Medis</label>
+              <input type="text" id="id_rm" name="ID_RM" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="id_pasien" class="form-label fw-semibold">Pilih Pasien</label>
+              <select id="id_pasien" name="ID_Pasien" class="form-control" required>
+                <option value="" disabled selected>Pilih Nama Pasien</option>
+                {% for pasien in pasien %}
+                <!-- Tampilkan nama_obat, tetapi value-nya ID_Obat -->
+                <option value="{{ pasien.ID_Pasien }}">{{ pasien.Nama_Pasien }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="keluhan" class="form-label fw-semibold">Keluhan</label>
+              <textarea id="keluhan" name="Keluhan" class="form-control" rows="2" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_dokter" class="form-label fw-semibold">Pilih Dokter</label>
+              <select id="id_dokter" name="ID_Dokter" class="form-control" required>
+                <option value="" disabled selected>Pilih Dokter</option>
+                {% for dok in dokter %}
+                <!-- Tampilkan nama_obat, tetapi value-nya ID_Obat -->
+                <option value="{{ dok.ID_Dokter }}">{{ dok.Nama_Dokter }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="diagnosa" class="form-label fw-semibold">Diagnosa</label>
+              <textarea id="diagnosa" name="Diagnosa" class="form-control" rows='2' required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_poli" class="form-label fw-semibold">Pilih Poliklinik</label>
+              <select id="id_poli" name="ID_Poli" class="form-control" required>
+                <option value="" disabled selected>Pilih Poliklinik</option>
+                {% for poli in poli %}
+                <!-- Tampilkan nama_obat, tetapi value-nya ID_Obat -->
+                <option value="{{ poli.ID_Poli }}">{{ poli.Nama_Poli }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="tgl_periksa" class="form-label fw-semibold">Tanggal Periksa</label>
+              <input type="date" id="tgl_periksa" name="Tgl_Periksa" class="form-control" required />
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="{{ url_for('tabel_rm') }}" class="btn btn-danger px-4">Batal</a>
+              <button type="submit" class="btn btn-primary px-4">Simpan</button>
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

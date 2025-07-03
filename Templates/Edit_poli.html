@@ -1,0 +1,65 @@
+{% extends "base/base1.html" %} {% block title %}Edit Poliklinik{% endblock %}
+{% block content %}
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 80vh"
+>
+  <div class="col-md-8">
+    <div class="card border-0 rounded-3 shadow">
+      <div class="card-header bg-light">
+        <h4 class="fw-bold text-dark">Edit Poliklinik</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="mb-3">
+            <label for="ID_Poli" class="form-label">ID Poli:</label>
+            <input
+              type="text"
+              class="form-control border border-secondary shadow-sm p-2"
+              id="ID_Poli"
+              name="ID_Poli"
+              value="{{ polis.ID_Poli }}"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="name_poli" class="form-label">Nama Poliklinik:</label>
+            <input
+              type="text"
+              class="form-control border border-secondary shadow-sm p-2"
+              id="name_poli"
+              name="Nama_Poli"
+              value="{{ polis.Nama_Poli }}"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="gedung" class="form-label">Gedung:</label>
+            <input
+              type="text"
+              class="form-control border border-secondary shadow-sm p-2"
+              id="gedung"
+              name="Gedung"
+              value="{{ polis.Gedung }}"
+              required
+            />
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <a
+              href="{{ url_for('Poliklinik') }}"
+              class="btn btn-outline-primary fw-bold"
+              >Cancel</a
+            >
+            <button type="submit" class="btn btn-primary px-4 py-2">
+              Simpan Perubahan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

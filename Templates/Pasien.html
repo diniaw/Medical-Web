@@ -1,0 +1,98 @@
+{% extends "base/base1.html" %} {%block title%}Pasien{%endblock%} {%block
+content%}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div
+        class="banner_content d-md-flex justify-content-between align-items-center"
+      >
+        <div class="mb-3 mb-md-0">
+          <h2>Data Pasien MedCare</h2>
+          <p>
+            Data pasien yang mendapatkan layanan di MedCare
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!-- Tabel -->
+<div class="container my-4">
+  <div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h5 class="card-title mb-0">Daftar Pasien</h5>
+      <a href="{{ url_for('tambah_pasien') }}" class="btn btn-primary px-4">Tambah Pasien</a>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+
+            <!-- Alert Section -->
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+              messages %}
+              <div class="container mt-3">
+                {% for category, message in messages %}
+                <div
+                  class="alert alert-{{ category }} alert-dismissible fade show"
+                  role="alert"
+                >
+                  {{ message }}
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %} {% endwith %}      
+
+        <table class="table table-striped align-middle">
+      <tr>
+        <th>ID Pasien</th>
+        <th>No Identitas</th>
+        <th>Nama Pasien</th>
+        <th>Jenis Kelamin</th>
+        <th>Alamat</th>
+        <th>No Telepon</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pasien in pasienrs %}
+      <tr>
+        <td>{{ pasien.ID_Pasien }}</td>
+        <td>{{ pasien.Nomor_Identitas }}</td>
+        <td>{{ pasien.Nama_Pasien }}</td>
+        <td>{{ pasien.Jenis_Kelamin }}</td>
+        <td>{{ pasien.Alamat }}</td>
+        <td>{{ pasien.No_Telepon }}</td>
+        <td>
+          <a href="{{ url_for('ubah_pasien', ID_Pasien=pasien.ID_Pasien) }}"class="btn btn-secondary btn-sm">Edit</a>
+          <a href="{{ url_for('hapus_pasien', ID_Pasien=pasien.ID_Pasien) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus baris ini?')" >Hapus</a>
+        </td> 
+      </tr>
+      {% endfor %}
+
+      <script>
+        setTimeout(function() {
+          let alerts = document.querySelectorAll('.alert');
+          alerts.forEach(alert => {
+            let bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+          });
+        }, 6000);
+      </script>
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+<!-- Tabel End -->
+    </div>
+  </div>
+</div>
